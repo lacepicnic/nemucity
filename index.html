@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>placeholder.neocities.org</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&family=Fredoka+One&display=swap');
+@font-face { font-family:'TitleFont'; src:url('images/porkys.ttf') format('truetype'); }
+@font-face { font-family:'BodyFont';  src:url('images/rainy hearts.ttf') format('truetype'); }
+
+:root {
+  --bsky:  #70c0f0;
+  --bmint: #50c898;
+  --blav:  #9060e0;
+  --byell: #d8b020;
+  --bpink: #f070a8;
+  --bpeach:#e08040;
+  --txt:   #5a4070;
+  --txts:  #9880c0;
+  --white: #ffffff;
+}
+
+*,*::before,*::after { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior:smooth; }
+
+body {
+  font-family: 'Nunito','BodyFont',sans-serif;
+  font-size:12px; color:var(--txt);
+  background-color:#fce8f5;
+  padding:18px 0 36px;
+  cursor:url('images/butterfly.gif'),auto;
+  position:relative; overflow-x:auto;
+}
+
+#hc { position:fixed; inset:0; pointer-events:none; z-index:0; }
+#cc { position:fixed; inset:0; pointer-events:none; z-index:99999; }
+
+a { color:var(--blav); text-decoration:underline; }
+a:hover { color:var(--bpink); text-decoration:none; }
+img { display:block; }
+
+@keyframes fp  { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-6px)} }
+@keyframes fp2 { 0%,100%{transform:translateY(0) rotate(-2deg)} 50%{transform:translateY(-5px) rotate(2deg)} }
+@keyframes sl  { 0%{transform:translateX(0)} 100%{transform:translateX(-50%)} }
+@keyframes rainbowbg { 0%{background-position:0%} 100%{background-position:300%} }
+
+/* ── OUTER SHELL ── */
+.outer {
+  width:860px; margin:0 auto;
+  position:relative; z-index:1;
+  background:#fff;
+  border:5px solid #e0b8f0;
+  border-radius:22px;
+  box-shadow:0 0 0 8px #fce0ff,0 8px 40px rgba(180,100,220,0.2);
+  overflow:hidden;
+}
+
+/* ── HEADER ── */
+.hdr {
+  position:relative; height:170px;
+  display:flex; align-items:center; justify-content:center;
+  background-image:url('images/title-bg.png');
+  background-size:cover; background-position:center;
+  background-color:#ffd0f0; overflow:hidden;
+}
+.hdr-al { position:absolute; left:0; top:0; height:100%; width:175px; pointer-events:none; z-index:3; }
+.hdr-ar { position:absolute; right:0; top:0; height:100%; width:175px; pointer-events:none; z-index:3; }
+.hdr-al img,.hdr-ar img { width:100%; height:100%; object-fit:contain; object-position:bottom; }
+.hdr-txt { position:relative; z-index:5; text-align:center; user-select:none; }
+.hdr-h1 {
+  font-family:'TitleFont','Fredoka One',fantasy;
+  font-size:60px; color:#ff6ab0;
+  -webkit-text-stroke:5px #fff; text-stroke:5px #fff;
+  paint-order:stroke fill; letter-spacing:4px; line-height:1;
+  filter:drop-shadow(0 4px 0 rgba(255,100,160,0.3));
+}
+
+/* ── HANGING STARS ── */
+.hstars {
+  width:100%; height:52px;
+  background-image:url('images/hanging-stars.gif');
+  background-repeat:repeat-x; background-size:auto 52px;
+  background-color:#fff8ff; background-position:center;
+  border-bottom:4px dashed #f0c0e8;
+}
+
+/* ── PLAID SIDE STRIPS (image 2 style) ── */
+.site-frame { display:flex; background-color:#fff8ff; }
+.side-plaid {
+  width:14px; flex-shrink:0;
+  background-image:url('images/checkedpink.jpg');
+  background-size:28px; opacity:0.6;
+}
+
+/* ── 3-COL GRID ── */
+.sg {
+  flex:1; padding:10px 8px 14px;
+  display:grid; grid-template-columns:156px 1fr 162px;
+  gap:9px; align-items:start;
+  background:rgba(255,252,255,0.7);
+}
+.col-left,.col-mid,.col-right { display:flex; flex-direction:column; gap:8px; }
+
+/* ── BOXES - chunky crayon borders ── */
+.sb { background:#fff; border-radius:14px; overflow:hidden; }
+
+.sb-profile-wrap  { border:3.5px solid var(--blav);   box-shadow:4px 4px 0 #d0b8f8; border-radius:14px; overflow:hidden; position:relative; }
+.sb-nav      { border:3.5px solid var(--bpink);  box-shadow:4px 4px 0 #f8c8e0; }
+.sb-cal-wrap { border:3.5px solid var(--bsky);   box-shadow:4px 4px 0 #b0daf8; border-radius:14px; overflow:hidden; }
+.sb-welcome  { border:3.5px solid var(--bmint);  box-shadow:4px 4px 0 #a8e8d0; }
+.sb-imgbox   { border:3.5px solid var(--byell);  box-shadow:4px 4px 0 #f0e080; }
+.sb-cbox     { border:3.5px solid var(--bpeach); box-shadow:4px 4px 0 #f8d0a8; border-radius:14px; overflow:hidden; background:#fff8f0; }
+.sb-updatelog{ border:3.5px solid var(--blav);   box-shadow:4px 4px 0 #c8b8f8; }
+.sb-mood     { border:3.5px solid var(--bpink);  box-shadow:4px 4px 0 #f8c8e0; }
+.sb-hood     { border:3.5px solid var(--bsky);   box-shadow:4px 4px 0 #b0daf8; }
+.sb-music    { border:3.5px solid var(--bmint);  box-shadow:4px 4px 0 #a8e8d0; }
+.sb-findme   { border:3.5px solid var(--byell);  box-shadow:4px 4px 0 #f0e080; }
+.sb-credits  { border:3.5px solid var(--bpeach); box-shadow:4px 4px 0 #f8d0a8; }
+
+/* ── BOX HEADERS ── */
+.sh {
+  font-family:'Fredoka One','TitleFont',cursive;
+  font-size:12px; letter-spacing:0.5px;
+  padding:5px 10px;
+  display:flex; align-items:center; gap:5px;
+  border-bottom:2.5px dashed rgba(255,255,255,0.7);
+}
+.sh img.hg { width:14px; height:14px; image-rendering:pixelated; flex-shrink:0; }
+
+.sb-nav       .sh { background:linear-gradient(90deg,#ffb8d8,#ffd8ec); color:#a03068; }
+.sb-welcome   .sh { background:linear-gradient(90deg,#a0f0d8,#c8fff0); color:#206850; }
+.sb-imgbox    .sh { background:linear-gradient(90deg,#fff0a0,#fffac8); color:#806020; }
+.sb-updatelog .sh { background:linear-gradient(90deg,#d0c0ff,#e8dcff); color:#503898; }
+.sb-mood      .sh { background:linear-gradient(90deg,#ffb8d8,#ffd8ec); color:#a03068; }
+.sb-hood      .sh { background:linear-gradient(90deg,#b8e8ff,#d8f4ff); color:#205880; }
+.sb-music     .sh { background:linear-gradient(90deg,#a0f0d8,#c8ffe8); color:#206850; }
+.sb-findme    .sh { background:linear-gradient(90deg,#ffe8a0,#fff8c8); color:#806020; }
+.sb-credits   .sh { background:linear-gradient(90deg,#ffd0b8,#ffe8d8); color:#804028; }
+
+/* ── BOX BODY ── */
+.sbody {
+  padding:8px 10px;
+  font-family:'Nunito','BodyFont',sans-serif;
+  font-size:11px; line-height:1.75; color:var(--txt);
+  background:#fff;
+}
+
+/* ── PROFILE ── */
+.profile-img {
+  width:156px; height:156px; object-fit:cover; display:block;
+  background:linear-gradient(135deg,#ffd8f0,#e0d0ff);
+}
+.ppet {
+  position:absolute; bottom:5px; right:5px; width:44px;
+  pointer-events:none; z-index:5; animation:fp2 4s ease-in-out infinite;
+}
+
+/* ── NAV: pill buttons like image 2 ── */
+.np {
+  display:block; padding:5px 10px; margin:3px 0;
+  border-radius:20px;
+  font-family:'Nunito',sans-serif; font-size:11px; font-weight:700;
+  text-decoration:none; text-align:center;
+  color:#fff; transition:transform .12s,filter .12s;
+}
+.np:hover { transform:translateY(-2px); filter:brightness(1.08); text-decoration:none; color:#fff; }
+.np:nth-child(1) { background:linear-gradient(135deg,#ff90c0,#ffb8d8); border:2px solid #f060a0; }
+.np:nth-child(2) { background:linear-gradient(135deg,#a070e8,#c8a8ff); border:2px solid #8050d0; }
+.np:nth-child(3) { background:linear-gradient(135deg,#50c8f0,#a0e0ff); border:2px solid #30a0d8; }
+.np:nth-child(4) { background:linear-gradient(135deg,#50d898,#a0f0c8); border:2px solid #30b878; }
+.np:nth-child(5) { background:linear-gradient(135deg,#f0c830,#ffe878); border:2px solid #c8a010; color:#806020; }
+
+/* ── DIVIDERS ── */
+.sdiv    { height:16px; background:url('images/stardivider-1.gif') repeat-x center; background-size:auto 14px; }
+.fdiv    { height:20px; background:url('images/food-divider.png')  repeat-x center; background-size:auto 18px; }
+.skipdiv { height:26px; background:url('images/skipropedivider.gif') repeat-x center; background-size:auto 24px; }
+
+/* ── CALENDAR ── */
+.cal-bg-wrap {
+  background-image:url('images/bg-2.png');
+  background-size:cover; background-position:center;
+  background-color:#e0f4ff;
+  padding:8px;
+  display:flex; flex-direction:column; align-items:center;
+}
+.cal-hdr { display:flex; justify-content:space-between; align-items:center; width:100%; margin-bottom:5px; }
+.cal-mrow { display:flex; align-items:center; gap:4px; font-family:'Fredoka One',cursive; font-size:11px; color:#fff; text-shadow:0 1px 3px rgba(0,80,140,0.5); }
+.cal-mrow img { width:14px; height:14px; image-rendering:pixelated; }
+.cbtn {
+  background:#fff; border:2px solid #a0d0f0; border-radius:8px;
+  padding:2px 7px; font-size:10px; cursor:pointer; color:#3080b0;
+  font-family:'Nunito',sans-serif; font-weight:700;
+}
+.cbtn:hover { background:#e8f8ff; }
+.ct { border-collapse:collapse; background:rgba(255,255,255,0.88); border-radius:8px; overflow:hidden; }
+.ct th { font-size:8px; font-weight:800; font-family:'Nunito',sans-serif; text-align:center; padding:3px 2px; }
+.ct th:nth-child(1){color:#f06080;} .ct th:nth-child(2){color:#f09040;}
+.ct th:nth-child(3){color:#c0a000;} .ct th:nth-child(4){color:#40b060;}
+.ct th:nth-child(5){color:#3090d0;} .ct th:nth-child(6){color:#8060e0;}
+.ct th:nth-child(7){color:#e060a0;}
+.ct td { font-size:9px; text-align:center; padding:3px 2px; cursor:default; color:#5a4070; line-height:1.4; font-family:'Nunito',sans-serif; }
+.ct tr:nth-child(even) td { background:rgba(200,180,255,0.1); }
+.ct td.td  { background:#ff90c0!important; color:#fff; font-weight:800; border-radius:5px; }
+.ct td.ts  { color:#f06080; } .ct td.tsa { color:#8060e0; }
+.ct td.te  { color:transparent; background:transparent!important; }
+.cal-foot { text-align:center; padding-top:4px; }
+.cal-foot img { margin:0 auto; height:12px; }
+
+/* ── NOTEBOOK PAIR ── */
+.notebook-pair { display:flex; align-items:flex-end; justify-content:center; gap:3px; pointer-events:none; }
+.notebook-pair img { animation:fp 4s ease-in-out infinite; }
+.notebook-pair img:nth-child(2) { animation-delay:.7s; }
+
+/* ── WELCOME ── */
+.sb-welcome .sbody {
+  background-color:#f8fff8;
+  background-image:url('images/log-bg.png');
+  background-repeat:repeat; background-size:180px;
+}
+.wrow { display:grid; grid-template-columns:1fr 68px; gap:8px; }
+.wimg { width:68px; border-radius:8px; border:2.5px solid var(--bmint); object-fit:cover; }
+
+/* ── TWO-COL SUBROW ── */
+.icrow { display:grid; grid-template-columns:1fr 1fr; gap:8px; }
+
+.cb-ph {
+  padding:20px 10px; font-family:'Nunito',sans-serif; font-size:10px;
+  color:#c08060; text-align:center; line-height:1.9;
+  height:100%; display:flex; flex-direction:column; justify-content:center; align-items:center;
+}
+
+/* ── UPDATE LOG ── */
+.sb-updatelog .sbody { padding:0; background:#fdfaff; }
+.uscroll { max-height:130px; overflow-y:auto; padding:6px 10px; scrollbar-width:thin; scrollbar-color:#d0b8f0 #fdfaff; }
+.uscroll::-webkit-scrollbar { width:4px; }
+.uscroll::-webkit-scrollbar-thumb { background:#d0b8f0; border-radius:4px; }
+.ue { padding:4px 2px; border-bottom:1.5px dashed #e8d8ff; font-size:10.5px; line-height:1.55; }
+.ue:last-child { border-bottom:none; }
+.ud { font-family:'Fredoka One',cursive; color:#8060c8; font-size:10px; }
+.ub { color:var(--txt); margin-top:1px; font-size:10.5px; }
+
+/* ── BANNER MARQUEE ── */
+.mwrap { background:#fff; border:3.5px solid #c8b0f0; border-radius:14px; overflow:hidden; padding:5px 0; box-shadow:4px 4px 0 #d8c8ff; }
+.mtrack { display:flex; gap:5px; width:max-content; animation:sl 26s linear infinite; }
+.mtrack:hover { animation-play-state:paused; }
+.mbtn { display:inline-block; width:88px; height:31px; border:1.5px solid #e0c8f8; border-radius:6px; overflow:hidden; background:#f8f0ff; flex-shrink:0; }
+.mbtn img { width:88px; height:31px; object-fit:cover; image-rendering:pixelated; }
+
+/* ── MOOD ── */
+.sb-mood .sbody { background:#fff8fc; font-size:10.5px; line-height:1.9; }
+.mood-text .mk { font-family:'Fredoka One',cursive; color:#f070a8; font-size:11px; }
+.mood-text .ms { font-family:'Fredoka One',cursive; color:#8060d8; font-size:11px; }
+.mood-text .ml { font-family:'Fredoka One',cursive; color:#3098d0; font-size:11px; }
+.mood-text .mr { font-family:'Fredoka One',cursive; color:#40b870; font-size:11px; }
+.mood-text .mw { font-family:'Fredoka One',cursive; color:#c89030; font-size:11px; }
+
+/* ── NEIGHBOURHOOD ── */
+.hgrid { display:grid; grid-template-columns:1fr 1fr; gap:4px; padding:7px; background:#f5f8ff; }
+.hgrid a { display:block; border-radius:6px; overflow:hidden; }
+.hgrid img { width:100%; height:24px; object-fit:cover; image-rendering:pixelated; border:2px solid #c0d8f8; display:block; transition:border-color .13s; }
+.hgrid a:hover img { border-color:#60a8f0; }
+
+/* ── MUSIC ── */
+.sb-music .sbody { background:#f5fff8; }
+.mt { font-family:'Fredoka One',cursive; color:#308060; font-size:11px; margin-bottom:1px; }
+.ma { font-size:9.5px; color:#80b898; margin-bottom:5px; }
+.pt { width:100%; height:6px; background:#c8f0e0; border:2px solid #80d8b0; border-radius:4px; cursor:pointer; margin-bottom:3px; }
+.pf { height:100%; background:linear-gradient(90deg,#40c880,#80e8b0); border-radius:3px; width:0%; }
+.tr { display:flex; justify-content:space-between; font-size:8.5px; color:#80b898; margin-bottom:5px; }
+.mc-row { display:flex; align-items:center; justify-content:center; gap:5px; }
+.mc  { background:#c8f5e0; border:2px solid #60d098; border-radius:8px; padding:3px 8px; font-size:9px; cursor:pointer; color:#1a7040; font-family:'Nunito',sans-serif; font-weight:700; }
+.mpl { background:linear-gradient(135deg,#50d890,#80f0b8); border:2px solid #30b870; border-radius:8px; padding:3px 10px; font-size:10px; cursor:pointer; color:#fff; font-family:'Nunito',sans-serif; font-weight:700; }
+
+/* ── FIND ME ── */
+.fb {
+  display:flex; align-items:center; gap:6px;
+  padding:5px 10px; margin:3px 0; border-radius:20px;
+  font-family:'Nunito',sans-serif; font-size:10px; font-weight:700;
+  text-decoration:none; transition:transform .12s,filter .12s;
+}
+.fb:hover { transform:translateX(3px); text-decoration:none; }
+.fb img { width:12px; height:12px; image-rendering:pixelated; flex-shrink:0; }
+.fb-vgen      { background:linear-gradient(135deg,#ffb0d0,#ffd8e8); border:2px solid #f080b0; color:#903060; }
+.fb-twitter   { background:linear-gradient(135deg,#90d0ff,#c0e8ff); border:2px solid #40a8f0; color:#205880; }
+.fb-tiktok    { background:linear-gradient(135deg,#90e0b8,#c0f8d8); border:2px solid #50c080; color:#185838; }
+.fb-youtube   { background:linear-gradient(135deg,#ffb880,#ffd8c0); border:2px solid #f08040; color:#803820; }
+.fb-instagram { background:linear-gradient(135deg,#d0a8ff,#e8d0ff); border:2px solid #9060e0; color:#502898; }
+
+/* ── CREDITS ── */
+.credits-body { padding:7px; background:#fff8f0; display:flex; flex-wrap:wrap; gap:4px; }
+
+/* ── FOOTER ── */
+.pgfoot-skip {
+  height:28px;
+  background:url('images/skipropedivider.gif') repeat-x center;
+  background-size:auto 26px; background-color:#fff0fc;
+  border-top:3px dashed #f0c0e8;
+}
+.pgfoot {
+  padding:10px; text-align:center;
+  font-family:'Fredoka One','TitleFont',cursive;
+  font-size:12px; color:#fff;
+  text-shadow:0 1px 4px rgba(150,50,120,0.5);
+  background:linear-gradient(90deg,#ffb8d8,#d8b8ff,#b8e8ff,#b8f0d8,#fff8b8,#ffb8d8);
+  background-size:300% 100%; animation:rainbowbg 8s linear infinite;
+}
+</style>
+</head>
+<body>
+
+<canvas id="hc"></canvas>
+<canvas id="cc"></canvas>
+
+<div class="outer">
+
+  <header class="hdr">
+    <div class="hdr-al"><img src="images/header-left.png" alt="" onerror="this.style.display='none'"></div>
+    <div class="hdr-txt"><div class="hdr-h1">placeholder</div></div>
+    <div class="hdr-ar"><img src="images/header-right.png" alt="" onerror="this.style.display='none'"></div>
+  </header>
+
+  <div class="hstars"></div>
+
+  <div class="site-frame">
+    <div class="side-plaid"></div>
+
+    <div class="sg">
+
+      <!-- ── LEFT COLUMN ── -->
+      <div class="col-left">
+
+        <div class="sb-profile-wrap">
+          <img class="profile-img" src="images/avatar.png" alt=""
+               onerror="this.style.background='linear-gradient(135deg,#ffd8f0,#e0d0ff)';this.removeAttribute('src')">
+          <img class="ppet" src="images/sugarpet-2.png" alt="" onerror="this.style.display='none'">
+        </div>
+
+        <div class="sb sb-nav">
+          <div class="sh">
+            <img class="hg" src="images/multicolor-heart.gif" alt="" onerror="this.style.display='none'">
+            ✦ navigation
+          </div>
+          <div class="sbody" style="padding:6px 8px 9px">
+            <a href="index.html"     class="np">🏠 home</a>
+            <a href="about.html"     class="np">⭐ about</a>
+            <a href="guestbook.html" class="np">💌 guestbook</a>
+            <a href="refsheet.html"  class="np">🎨 ref sheet</a>
+            <a href="faq.html"       class="np">🍦 faq</a>
+          </div>
+        </div>
+
+        <div class="sdiv"></div>
+
+        <div class="sb-cal-wrap">
+          <div class="cal-bg-wrap">
+            <div class="cal-hdr">
+              <button class="cbtn" id="cp">&lt;</button>
+              <div class="cal-mrow">
+                <img src="images/star-yellow.gif" alt="" onerror="this.style.display='none'">
+                <span id="cl"></span>
+                <img src="images/star.gif" alt="" onerror="this.style.display='none'">
+              </div>
+              <button class="cbtn" id="cn">&gt;</button>
+            </div>
+            <table class="ct" id="ct"></table>
+            <div class="cal-foot">
+              <img src="images/stardivider-2.gif" alt="" onerror="this.style.display='none'">
+            </div>
+          </div>
+        </div>
+
+        <div class="notebook-pair">
+          <img src="images/mymelonotebook-1.gif" width="76" alt="" onerror="this.style.display='none'">
+          <img src="images/mymelonotebook-2.gif" width="76" alt="" onerror="this.style.display='none'">
+        </div>
+
+      </div>
+
+      <!-- ── MIDDLE COLUMN ── -->
+      <div class="col-mid">
+
+        <div class="sb sb-welcome">
+          <div class="sh">
+            <img class="hg" src="images/icecream.gif" alt="" onerror="this.style.display='none'">
+            ✿ welcome!
+          </div>
+          <div class="sbody">
+            <div class="wrow">
+              <div>
+                <p>Hi there and welcome to my little corner of the internet! 🌸 I'm so glad you found your way here. This is my personal site where I collect all the things that make me happy — cute art, fun discoveries, and little life updates.</p>
+                <br>
+                <p>Feel free to look around, sign my guestbook, and make yourself at home! This site works best on desktop. Thanks for stopping by! ♡</p>
+              </div>
+              <img class="wimg" src="images/welcome.png" alt="" onerror="this.style.display='none'">
+            </div>
+          </div>
+        </div>
+
+        <div class="icrow">
+
+          <div class="sb sb-imgbox">
+            <div class="sh">
+              <img class="hg" src="images/shootingstar.gif" alt="" onerror="this.style.display='none'">
+              ☆ about me
+            </div>
+            <div class="sbody">
+              <img src="images/gallery-image.png" alt="" style="border-radius:8px;margin-bottom:6px;width:100%;object-fit:cover;border:2.5px solid #ffe090" onerror="this.style.display='none'">
+              <p>Just a person who loves cute things, pixel art, collecting stationery, and spending way too much time decorating corners of the internet. 🌟</p>
+              <br>
+              <p>Hobbies include drawing, hunting for cute stickers, and listening to music on repeat. Nice to meet you! 🍓</p>
+            </div>
+          </div>
+
+          <div class="sb-cbox" style="min-height:200px;">
+            <div class="cb-ph">
+              💬 paste your<br>cbox embed here!<br>
+              <span style="font-size:9px;color:#d0a080">(width="100%" height="100%")</span>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="sb sb-updatelog">
+          <div class="sh">
+            <img class="hg" src="images/subheading-1.gif" alt="" onerror="this.style.display='none'">
+            📝 update log
+          </div>
+          <div class="sbody">
+            <div class="uscroll">
+              <div class="ue">
+                <div class="ud">2025 / 06 / 27</div>
+                <div class="ub">Finished the new homepage! Gave everything a colouring book makeover with chunky rainbow borders and pastel colours. So happy with how it turned out ✏️🌈</div>
+              </div>
+              <div class="ue">
+                <div class="ud">2025 / 06 / 20</div>
+                <div class="ub">Added the music player, chatbox, neighbourhood links, and sparkle cursor trail. Also set up the banner marquee at the bottom! 🎵</div>
+              </div>
+              <div class="ue">
+                <div class="ud">2025 / 05 / 14</div>
+                <div class="ub">Created my Neocities account and started designing. So excited to have my own little space on the web! 🌸</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="fdiv"></div>
+
+        <div class="mwrap">
+          <div class="mtrack">
+            <a href="#" class="mbtn"><img src="images/banner1.gif" alt="" onerror="this.style.display='none'"></a>
+            <a href="#" class="mbtn"><img src="images/banner2.gif" alt="" onerror="this.style.display='none'"></a>
+            <a href="#" class="mbtn"><img src="images/banner3.gif" alt="" onerror="this.style.display='none'"></a>
+            <a href="#" class="mbtn"><img src="images/banner4.gif" alt="" onerror="this.style.display='none'"></a>
+            <a href="#" class="mbtn"><img src="images/banner5.gif" alt="" onerror="this.style.display='none'"></a>
+            <a href="#" class="mbtn"><img src="images/banner6.gif" alt="" onerror="this.style.display='none'"></a>
+            <a href="#" class="mbtn"><img src="images/banner1.gif" alt="" onerror="this.style.display='none'"></a>
+            <a href="#" class="mbtn"><img src="images/banner2.gif" alt="" onerror="this.style.display='none'"></a>
+            <a href="#" class="mbtn"><img src="images/banner3.gif" alt="" onerror="this.style.display='none'"></a>
+            <a href="#" class="mbtn"><img src="images/banner4.gif" alt="" onerror="this.style.display='none'"></a>
+            <a href="#" class="mbtn"><img src="images/banner5.gif" alt="" onerror="this.style.display='none'"></a>
+            <a href="#" class="mbtn"><img src="images/banner6.gif" alt="" onerror="this.style.display='none'"></a>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- ── RIGHT COLUMN ── -->
+      <div class="col-right">
+
+        <div class="sb sb-mood">
+          <div class="sh">
+            <img class="hg" src="images/subheading-2.gif" alt="" onerror="this.style.display='none'">
+            🌙 current mood
+          </div>
+          <div class="sbody">
+            <div class="mood-text">
+              <span class="mk">mood:</span> sleepy &amp; soft ☁️<br>
+              <span class="ms">status:</span> melon soda sipping<br>
+              <span class="ml">listening:</span> lofi chill vibes<br>
+              <span class="mr">reading:</span> a cosy manga<br>
+              <span class="mw">watching:</span> slice of life anime
+            </div>
+          </div>
+        </div>
+
+        <div class="sb sb-hood">
+          <div class="sh">
+            <img class="hg" src="images/hibiscus.gif" alt="" onerror="this.style.display='none'">
+            🏡 neighbourhood
+          </div>
+          <div class="hgrid">
+            <a href="https://lacepicnic.neocities.org" target="_blank"><img src="https://files.catbox.moe/7v7qxw.GIF" alt="lacepicnic"></a>
+            <a href="https://lacepicnic.neocities.org" target="_blank"><img src="https://files.catbox.moe/7v7qxw.GIF" alt="lacepicnic"></a>
+            <a href="https://lacepicnic.neocities.org" target="_blank"><img src="https://files.catbox.moe/7v7qxw.GIF" alt="lacepicnic"></a>
+            <a href="https://lacepicnic.neocities.org" target="_blank"><img src="https://files.catbox.moe/7v7qxw.GIF" alt="lacepicnic"></a>
+            <a href="https://lacepicnic.neocities.org" target="_blank"><img src="https://files.catbox.moe/7v7qxw.GIF" alt="lacepicnic"></a>
+            <a href="https://lacepicnic.neocities.org" target="_blank"><img src="https://files.catbox.moe/7v7qxw.GIF" alt="lacepicnic"></a>
+          </div>
+        </div>
+
+        <div class="sb sb-music">
+          <div class="sh">
+            <img class="hg" src="images/multicolor-whale.gif" alt="" onerror="this.style.display='none'">
+            🎵 now playing
+          </div>
+          <div class="sbody">
+            <div class="mt" id="mt">add your song title</div>
+            <div class="ma" id="ma">artist name here</div>
+            <div class="pt" id="pt"><div class="pf" id="pf"></div></div>
+            <div class="tr"><span id="tc">0:00</span><span id="tt">0:00</span></div>
+            <div class="mc-row">
+              <button class="mc"  id="mprev">|◀</button>
+              <button class="mpl" id="mplay">▶</button>
+              <button class="mc"  id="mnext">▶|</button>
+            </div>
+            <audio id="aud" preload="metadata"><source src="images/music.mp3" type="audio/mpeg"></audio>
+          </div>
+        </div>
+
+        <div class="sb sb-findme">
+          <div class="sh">
+            <img class="hg" src="images/shootingstar.gif" alt="" onerror="this.style.display='none'">
+            🌟 find me
+          </div>
+          <div class="sbody" style="padding:6px 8px">
+            <a href="#" class="fb fb-vgen">     <img src="images/subheading-1.gif" alt="" onerror="this.style.display='none'"> vgen</a>
+            <a href="#" class="fb fb-twitter">  <img src="images/subheading-2.gif" alt="" onerror="this.style.display='none'"> twitter</a>
+            <a href="#" class="fb fb-tiktok">   <img src="images/star.gif"         alt="" onerror="this.style.display='none'"> tiktok</a>
+            <a href="#" class="fb fb-youtube">  <img src="images/pink-heart.gif"   alt="" onerror="this.style.display='none'"> youtube</a>
+            <a href="#" class="fb fb-instagram"><img src="images/star-yellow.gif"  alt="" onerror="this.style.display='none'"> instagram</a>
+          </div>
+        </div>
+
+        <div class="sb sb-credits">
+          <div class="sh">
+            <img class="hg" src="images/carousel.gif" alt="" onerror="this.style.display='none'">
+            🎀 credits
+          </div>
+          <div class="credits-body">
+            <a href="https://lacepicnic.neocities.org" target="_blank">
+              <img src="https://files.catbox.moe/7v7qxw.GIF" alt="lacepicnic" style="border:2px solid #f0c8d8;border-radius:6px;">
+            </a>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="side-plaid"></div>
+  </div>
+
+  <div class="pgfoot-skip"></div>
+  <footer class="pgfoot">placeholder.neocities.org &mdash; made with ♡ &mdash; &copy; 2025</footer>
+
+</div>
+
+<script>
+(function(){
+  var M=['January','February','March','April','May','June','July','August','September','October','November','December'];
+  var now=new Date(),y=now.getFullYear(),m=now.getMonth();
+  function render(){
+    document.getElementById('cl').textContent=M[m]+' '+y;
+    var t=document.getElementById('ct');t.innerHTML='';
+    var hr=t.insertRow();
+    ['Su','Mo','Tu','We','Th','Fr','Sa'].forEach(function(d){var th=document.createElement('th');th.textContent=d;hr.appendChild(th);});
+    var f=new Date(y,m,1).getDay(),days=new Date(y,m+1,0).getDate(),row,col=0;
+    row=t.insertRow();
+    for(var i=0;i<f;i++){var td=document.createElement('td');td.className='te';td.textContent='-';row.appendChild(td);col++;}
+    for(var d=1;d<=days;d++){
+      if(col===7){row=t.insertRow();col=0;}
+      var td=document.createElement('td');
+      var dw=(f+d-1)%7;
+      if(dw===0)td.classList.add('ts');
+      if(dw===6)td.classList.add('tsa');
+      if(d===now.getDate()&&m===now.getMonth()&&y===now.getFullYear())td.classList.add('td');
+      td.textContent=d;row.appendChild(td);col++;
+    }
+  }
+  render();
+  document.getElementById('cp').onclick=function(){m--;if(m<0){m=11;y--;}render();};
+  document.getElementById('cn').onclick=function(){m++;if(m>11){m=0;y++;}render();};
+})();
+
+(function(){
+  var a=document.getElementById('aud'),pp=document.getElementById('mplay'),pf=document.getElementById('pf'),
+      pt=document.getElementById('pt'),ct=document.getElementById('tc'),tt=document.getElementById('tt'),playing=false;
+  function fmt(s){var m=Math.floor(s/60),sec=Math.floor(s%60);return m+':'+(sec<10?'0':'')+sec;}
+  pp.onclick=function(){if(a.readyState>0){if(playing){a.pause();playing=false;pp.textContent='▶';}else{a.play();playing=true;pp.textContent='⏸';}}else{playing=!playing;pp.textContent=playing?'⏸':'▶';}};
+  document.getElementById('mprev').onclick=function(){if(a.readyState>0)a.currentTime=0;};
+  document.getElementById('mnext').onclick=function(){if(a.readyState>0)a.currentTime=a.duration||0;};
+  a.addEventListener('timeupdate',function(){if(!a.duration)return;pf.style.width=(a.currentTime/a.duration*100)+'%';ct.textContent=fmt(a.currentTime);tt.textContent=fmt(a.duration);});
+  a.addEventListener('loadedmetadata',function(){tt.textContent=fmt(a.duration);});
+  a.addEventListener('ended',function(){playing=false;pp.textContent='▶';pf.style.width='0%';});
+  pt.onclick=function(e){if(!a.duration)return;var rc=pt.getBoundingClientRect();a.currentTime=((e.clientX-rc.left)/rc.width)*a.duration;};
+  a.volume=0.7;
+})();
+
+(function(){
+  var canvas=document.getElementById('hc'),ctx=canvas.getContext('2d');
+  var SP=22,HW=8,HH=8,COL='#f0b0d8';
+  var hc2=document.createElement('canvas');hc2.width=HW;hc2.height=HH;
+  var hx=hc2.getContext('2d');
+  var img=new Image();img.src='images/heart.png';
+  img.onload=function(){hx.drawImage(img,0,0,HW,HH);hx.globalCompositeOperation='source-in';hx.fillStyle=COL;hx.fillRect(0,0,HW,HH);hx.globalCompositeOperation='source-over';resize();};
+  img.onerror=function(){resize();};
+  function resize(){canvas.width=window.innerWidth;canvas.height=window.innerHeight;draw();}
+  function draw(){
+    ctx.clearRect(0,0,canvas.width,canvas.height);
+    for(var y=0;y<canvas.height+SP;y+=SP/2){
+      var odd=Math.floor(y/(SP/2))%2===1,xO=odd?SP/2:0;
+      for(var x=xO;x<canvas.width+SP;x+=SP){
+        if(img.complete&&img.naturalWidth>0){ctx.drawImage(hc2,x-HW/2,y-HH/2);}
+        else{ctx.beginPath();ctx.arc(x,y,3,0,Math.PI*2);ctx.fillStyle=COL;ctx.fill();}
+      }
+    }
+  }
+  resize();window.addEventListener('resize',function(){canvas.width=window.innerWidth;canvas.height=window.innerHeight;draw();});
+})();
+
+(function(){
+  var cv=document.getElementById('cc'),cx=cv.getContext('2d');
+  function r(){cv.width=window.innerWidth;cv.height=window.innerHeight;}r();window.addEventListener('resize',r);
+  var P=[],S=['✦','★','✿','♡','✧','⋆','☆','◇'],C=['#ffb0d0','#ff80b0','#ffd860','#c890ff','#80f0d8','#ff9ec8','#ffe060','#d8a8ff'];
+  window.addEventListener('mousemove',function(e){
+    for(var i=0;i<2;i++)P.push({x:e.clientX+(Math.random()-.5)*12,y:e.clientY+(Math.random()-.5)*12,vx:(Math.random()-.5),vy:Math.random()*2+.5,life:1,decay:Math.random()*.018+.01,size:Math.random()*9+5,char:S[Math.floor(Math.random()*S.length)],color:C[Math.floor(Math.random()*C.length)],rot:Math.random()*Math.PI*2,rotV:(Math.random()-.5)*.07});
+  });
+  function tick(){
+    cx.clearRect(0,0,cv.width,cv.height);
+    for(var i=P.length-1;i>=0;i--){var p=P[i];p.x+=p.vx;p.y+=p.vy;p.rot+=p.rotV;p.life-=p.decay;if(p.life<=0){P.splice(i,1);continue;}cx.save();cx.globalAlpha=p.life;cx.translate(p.x,p.y);cx.rotate(p.rot);cx.font=p.size+'px serif';cx.fillStyle=p.color;cx.textAlign='center';cx.textBaseline='middle';cx.fillText(p.char,0,0);cx.restore();}
+    requestAnimationFrame(tick);
+  }
+  tick();
+})();
+</script>
+</body>
+</html>
