@@ -3,16 +3,12 @@
 <head>
 <meta charset="UTF-8">
 <style>
-
 @font-face { font-family:'BodyFont'; src:url('https://macarondiary.neocities.org/images/rainyhearts.ttf') format('truetype'); }
-
 :root {
   --txt:#c898ac; --txts:#d8b8c8; --head:#e8a0c0;
   --b:#f4cede; --b2:#f0b8d0; --dash:#f0c8d8;
 }
-
 * { margin:0; padding:0; box-sizing:border-box; }
-
 body {
   font-family:'BodyFont',sans-serif;
   font-size:14px;
@@ -20,12 +16,9 @@ body {
   background:transparent;
   padding:12px 14px;
 }
-
 /* HCB overrides */
 #HCB_comment_box * { font-family:'BodyFont',sans-serif !important; color:var(--txt) !important; }
-
 #HCB_comment_box a { color:var(--b2) !important; }
-
 #HCB_comment_box input,
 #HCB_comment_box textarea {
   font-family:'BodyFont',sans-serif !important;
@@ -35,7 +28,6 @@ body {
   color:var(--txt) !important;
   outline:none !important;
 }
-
 #HCB_comment_box input[type=submit],
 #HCB_comment_box button {
   font-family:'BodyFont',sans-serif !important;
@@ -46,21 +38,40 @@ body {
   cursor:pointer !important;
   transition:background .15s !important;
 }
-
 #HCB_comment_box input[type=submit]:hover,
 #HCB_comment_box button:hover {
   background:#fde8f0 !important;
 }
-
 /* hide promo line */
 #HCB_comment_box .hcb-need-comment-box,
 #HCB_comment_box [class*="need-comment"] { display:none !important; }
 
+/* do not steal popup */
+#click-popup {
+  position:fixed; display:none; z-index:9999999; pointer-events:none;
+  font-family:'BodyFont',sans-serif; font-size:13px; color:#c878a0;
+  white-space:nowrap; padding:6px 12px; background:#fffafd;
+  border:1.5px dashed var(--dash); border-radius:6px;
+  box-shadow:0 2px 10px rgba(200,100,140,.18);
+}
 </style>
 </head>
 <body>
 <div id="HCB_comment_box"><a href="http://www.htmlcommentbox.com">Comment Form</a> is loading comments...</div>
 <link rel="stylesheet" type="text/css" href="https://www.htmlcommentbox.com/static/skins/bootstrap/twitter-bootstrap.css?v=0" />
 <script type="text/javascript" id="hcb"> /*<!--*/ if(!window.hcb_user){hcb_user={};} hcb_user.PAGE="https://macarondiary.neocities.org/guestbook.html"; (function(){var s=document.createElement("script"), l=hcb_user.PAGE, h="https://www.htmlcommentbox.com";s.setAttribute("type","text/javascript");s.setAttribute("src", h+"/jread?page="+encodeURIComponent(l).replace("+","%2B")+"&mod=%241%24wq1rdBcg%24.AdjVAbyItuFPKeRtxSPx."+"&opts=16798&num=10&ts=1774706993542");if (typeof s!="undefined") document.getElementsByTagName("head")[0].appendChild(s);})(); /*-->*/ </script>
+
+<div id="click-popup">do not steal !</div>
+
+<script>
+document.addEventListener('DOMContentLoaded',function(){
+  var box=document.getElementById('click-popup');
+  if(!box)return;
+  var timer=null;
+  function show(x,y){box.style.left=(x+8)+'px';box.style.top=(y-38)+'px';box.style.display='block';if(timer)clearTimeout(timer);timer=setTimeout(function(){box.style.display='none';},1400);}
+  document.addEventListener('mousedown',function(e){if(e.button===2)show(e.clientX,e.clientY);});
+  document.addEventListener('contextmenu',function(e){e.preventDefault();});
+});
+</script>
 </body>
 </html>
