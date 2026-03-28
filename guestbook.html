@@ -3,7 +3,59 @@
 <head>
 <meta charset="UTF-8">
 <style>
-  body { margin: 0; background: transparent; font-family: sans-serif; }
+
+@font-face { font-family:'BodyFont'; src:url('https://macarondiary.neocities.org/images/rainyhearts.ttf') format('truetype'); }
+
+:root {
+  --txt:#c898ac; --txts:#d8b8c8; --head:#e8a0c0;
+  --b:#f4cede; --b2:#f0b8d0; --dash:#f0c8d8;
+}
+
+* { margin:0; padding:0; box-sizing:border-box; }
+
+body {
+  font-family:'BodyFont',sans-serif;
+  font-size:14px;
+  color:var(--txt);
+  background:transparent;
+  padding:12px 14px;
+}
+
+/* HCB overrides */
+#HCB_comment_box * { font-family:'BodyFont',sans-serif !important; color:var(--txt) !important; }
+
+#HCB_comment_box a { color:var(--b2) !important; }
+
+#HCB_comment_box input,
+#HCB_comment_box textarea {
+  font-family:'BodyFont',sans-serif !important;
+  border:1.5px dashed var(--dash) !important;
+  border-radius:8px !important;
+  background:#fffafe !important;
+  color:var(--txt) !important;
+  outline:none !important;
+}
+
+#HCB_comment_box input[type=submit],
+#HCB_comment_box button {
+  font-family:'BodyFont',sans-serif !important;
+  border-radius:999px !important;
+  border:1.5px dashed var(--dash) !important;
+  background:#fff5fa !important;
+  color:#c878a0 !important;
+  cursor:pointer !important;
+  transition:background .15s !important;
+}
+
+#HCB_comment_box input[type=submit]:hover,
+#HCB_comment_box button:hover {
+  background:#fde8f0 !important;
+}
+
+/* hide promo line */
+#HCB_comment_box .hcb-need-comment-box,
+#HCB_comment_box [class*="need-comment"] { display:none !important; }
+
 </style>
 </head>
 <body>
