@@ -15,7 +15,6 @@ body {
   color:var(--txt);
   background:transparent;
   padding:12px 14px;
-  cursor:url('https://macarondiary.neocities.org/images/cursor-1.gif'),auto;
 }
 #HCB_comment_box * { font-family:'BodyFont',sans-serif !important; color:var(--txt) !important; }
 #HCB_comment_box a { color:var(--b2) !important; }
@@ -68,7 +67,11 @@ body {
   var base='https://macarondiary.neocities.org/images/';
   var frames=[base+'cursor-1.gif',base+'cursor-2.gif',base+'cursor-3.gif',base+'cursor-4.gif',base+'cursor-5.gif',base+'cursor-6.gif',base+'cursor-7.gif',base+'cursor-8.gif'];
   var fi=0,style=document.createElement('style');document.head.appendChild(style);
-  function tick(){style.textContent='*:not(#HCB_comment_box):not(#HCB_comment_box *){cursor:url(\''+frames[fi]+'\'),auto!important}';fi=(fi+1)%frames.length;}
+  function tick(){
+    var url='url(\''+frames[fi]+'\'),auto';
+    style.textContent='html,body,*:not(#HCB_comment_box):not(#HCB_comment_box *){cursor:'+url+'!important}';
+    fi=(fi+1)%frames.length;
+  }
   tick();setInterval(tick,120);
 })();
 
@@ -83,46 +86,6 @@ body {
 })();
 
 /* do not steal popup */
-document.addEventListener('DOMContentLoaded',function(){
-  var box=document.getElementById('click-popup');
-  if(!box)return;
-  var timer=null;
-  function show(x,y){box.style.left=(x+8)+'px';box.style.top=(y-38)+'px';box.style.display='block';if(timer)clearTimeout(timer);timer=setTimeout(function(){box.style.display='none';},1400);}
-  document.addEventListener('mousedown',function(e){if(e.button===2)show(e.clientX,e.clientY);});
-  document.addEventListener('contextmenu',function(e){e.preventDefault();});
-});
-</script>
-</body>
-</html>  color:#c878a0 !important;
-  cursor:pointer !important;
-  transition:background .15s !important;
-}
-#HCB_comment_box input[type=submit]:hover,
-#HCB_comment_box button:hover {
-  background:#fde8f0 !important;
-}
-/* hide promo line */
-#HCB_comment_box .hcb-need-comment-box,
-#HCB_comment_box [class*="need-comment"] { display:none !important; }
-
-/* do not steal popup */
-#click-popup {
-  position:fixed; display:none; z-index:9999999; pointer-events:none;
-  font-family:'BodyFont',sans-serif; font-size:13px; color:#c878a0;
-  white-space:nowrap; padding:6px 12px; background:#fffafd;
-  border:1.5px dashed var(--dash); border-radius:6px;
-  box-shadow:0 2px 10px rgba(200,100,140,.18);
-}
-</style>
-</head>
-<body>
-<div id="HCB_comment_box"><a href="http://www.htmlcommentbox.com">Comment Form</a> is loading comments...</div>
-<link rel="stylesheet" type="text/css" href="https://www.htmlcommentbox.com/static/skins/bootstrap/twitter-bootstrap.css?v=0" />
-<script type="text/javascript" id="hcb"> /*<!--*/ if(!window.hcb_user){hcb_user={};} hcb_user.PAGE="https://macarondiary.neocities.org/guestbook.html"; (function(){var s=document.createElement("script"), l=hcb_user.PAGE, h="https://www.htmlcommentbox.com";s.setAttribute("type","text/javascript");s.setAttribute("src", h+"/jread?page="+encodeURIComponent(l).replace("+","%2B")+"&mod=%241%24wq1rdBcg%24.AdjVAbyItuFPKeRtxSPx."+"&opts=16798&num=10&ts=1774706993542");if (typeof s!="undefined") document.getElementsByTagName("head")[0].appendChild(s);})(); /*-->*/ </script>
-
-<div id="click-popup">do not steal !</div>
-
-<script>
 document.addEventListener('DOMContentLoaded',function(){
   var box=document.getElementById('click-popup');
   if(!box)return;
